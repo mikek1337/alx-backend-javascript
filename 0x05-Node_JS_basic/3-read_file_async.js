@@ -1,7 +1,14 @@
 const fs = require('fs');
 
 module.exports = async (path) => {
-  const data = await fs.readFileSync(path);
+  try
+  {
+    const data = await fs.readFileSync(path);
+
+  } catch(error)
+  {
+    throw new Error('Cannot load the database');
+  }
   if (!data) {
     throw new Error('Cannot load the database');
   } else {
