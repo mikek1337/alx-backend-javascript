@@ -6,6 +6,9 @@ function input() {
       console.log(`Your name is: ${data}`);
     }
   });
+  process.on("exit", (code) => {
+    console.log("This important software is now closing");
+  });
 }
 
 input();
