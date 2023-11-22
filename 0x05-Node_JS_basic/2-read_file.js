@@ -11,7 +11,9 @@ module.exports = (path) => {
     const fieldsCounts = {};
     // eslint-disable-next-line guard-for-in
     for (const line in lines) {
+      lines[line] = lines[line].replace('\r', '');
       const entry = lines[line].split(',');
+
       if (fieldsCounts[entry[entry.length - 1]] != null) {
         // eslint-disable-next-line no-lonely-if
         if (entry[entry.length - 1] !== '') {
