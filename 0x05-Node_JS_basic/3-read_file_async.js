@@ -1,12 +1,10 @@
 const fs = require('fs');
 
 module.exports = async (path) => {
-  try
-  {
-    const data = await fs.readFileSync(path);
-
-  } catch(error)
-  {
+  let data;
+  try {
+    data = await fs.readFileSync(path);
+  } catch (error) {
     throw new Error('Cannot load the database');
   }
   if (!data) {
@@ -18,7 +16,9 @@ module.exports = async (path) => {
     const fieldsCounts = {};
     // eslint-disable-next-line guard-for-in
     for (const line in lines) {
+      lines[line] = lines[line].replace('\r', '');
       const entry = lines[line].split(',');
+
       // eslint-disable-next-line no-lonely-if
       if (fieldsCounts[entry[entry.length - 1]] != null) {
         if (entry[entry.length - 1] !== '') {
@@ -35,6 +35,7 @@ module.exports = async (path) => {
         }
       }
     }
+
     // eslint-disable-next-line guard-for-in
     for (const field in fieldsCounts) {
       console.log(`Number of students in ${field}: ${fieldsCounts[field].count}. List: ${fieldsCounts[field].names.join(', ')}`);
