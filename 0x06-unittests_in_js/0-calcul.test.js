@@ -15,6 +15,10 @@ describe('calculateNumber', () => {
   });
 
   it('should return 4 when passed 2.0 and 2', () => {
-    assert.strictEqual(calculateNumber(2.0, 2),4);
+    assert.strictEqual(calculateNumber(2.0, 2), 4);
+  });
+
+  it('should return 5 when passed 1.2 and 3.7', () => {
+    assert.strictEqual(calculateNumber(1, 3.7), 5);
   });
 });
