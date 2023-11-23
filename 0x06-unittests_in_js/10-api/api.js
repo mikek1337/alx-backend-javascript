@@ -19,13 +19,14 @@ app.get("/available_payments", (req, res) => {
   });
 });
 
-app.post("/login", (req, res) => {
-  const userName = req.body.userName;
-  if (userName) {
-    res.send(`Welcome ${userName}`);
-  } else {
-    res.status(404).send();
+app.post('/login', (req, res) => {
+  let username = '';
+
+  if (req.body) {
+    username = req.body.userName;
   }
+
+  res.send(`Welcome ${username}`);
 });
 
 app.listen(7865, "localhost", () => {
