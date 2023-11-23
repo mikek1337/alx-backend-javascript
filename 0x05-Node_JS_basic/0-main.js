@@ -1,10 +1,4 @@
-const countStudents = require('./3-read_file_async');
+const countStudents = require("./2-read_file");
 
-countStudents("nope.csv")
-    .then(() => {
-        console.log("Done!");
-    })
-        .catch((error) => {
-        console.log(error);
-    });
+countStudents("database.csv")
 console.log("After!");
